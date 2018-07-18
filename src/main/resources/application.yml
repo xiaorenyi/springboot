@@ -1,4 +1,2 @@
 server:
-  servlet:
-    context-path: /git
-  port: 80
+  port: 8999
