@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @RequestMapping("/say")
-    public String say(){
+    public String say() throws InterruptedException {
         return "hello welcome to springboot";
     }
 
