@@ -3,9 +3,9 @@ package com.xry.studygit.mongo.config;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
+import com.xry.studygit.mongo.config.property.BaseMongoProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -36,19 +36,19 @@ public class MultipleMongoConfig {
 
     @Bean
     @Primary
-    public MongoDbFactory mmFactory(MongoProperties mongo) throws Exception {
+    public MongoDbFactory mmFactory(BaseMongoProperties mongo) throws Exception {
         return builtMongoDbFactory(mongo);
     }
 
     @Bean
-    public MongoDbFactory ggFactory(MongoProperties mongo) throws Exception {
+    public MongoDbFactory ggFactory(BaseMongoProperties mongo) throws Exception {
         return builtMongoDbFactory(mongo);
     }
 
-    private MongoDbFactory builtMongoDbFactory(MongoProperties mongo){
+    private MongoDbFactory builtMongoDbFactory(BaseMongoProperties mongo){
         ServerAddress addr = new ServerAddress(mongo.getHost(), mongo.getPort());
         List<MongoCredential> credentialList = new ArrayList<MongoCredential>();
-        MongoCredential credential = MongoCredential.createCredential(mongo.getUsername(), mongo.getDatabase(), mongo.getPassword());
+        MongoCredential credential = MongoCredential.createCredential(mongo.getUsername(), mongo.getDatabase(), mongo.getPassword().toCharArray());
         credentialList.add(credential);
         MongoClient mongoClient = new MongoClient(addr, credentialList);
         return new SimpleMongoDbFactory(mongoClient, mongo.getDatabase());

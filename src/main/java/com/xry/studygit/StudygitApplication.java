@@ -1,12 +1,11 @@
 package com.xry.studygit;
 
-import com.xry.studygit.kafka.provider.KafkaSender;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
+@MapperScan("com.xry.studygit.mybatis.mapper")
 public class StudygitApplication {
 
 

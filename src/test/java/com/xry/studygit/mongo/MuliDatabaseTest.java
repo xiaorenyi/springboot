@@ -26,15 +26,15 @@ public class MuliDatabaseTest {
     public void muliDbTest(){
 
         BookDO bookDO = new BookDO();
-        bookDO.setAuthor("蔡叔叔");
-        bookDO.setName("认知突围");
-        bookDO.setPrice(29.3);
+        bookDO.setAuthor("蔡叔叔2");
+        bookDO.setName("认知突围2");
+        bookDO.setPrice(27.3);
         BookDO bookRes = bookRepo.save(bookDO);
         log.info("save book res = {}",bookRes);
 
         CityDO cityDO = new CityDO();
-        cityDO.setName("上海");
-        cityDO.setSpecialty("东方之珠");
+        cityDO.setName("上海2");
+        cityDO.setSpecialty("东方之珠2");
         CityDO cityRes = cityRepo.save(cityDO);
         log.info("save city res = {}",cityRes);
     }
